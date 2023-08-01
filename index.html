@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="./css/main.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnakeJS</title>
+</head>
+<body class="container">
+    <noscript>
+        <div class="message">
+            You don't have javascript enabled.  Good luck with that.
+        </div>
+    </noscript>
+    <div id="gameover">
+        <h1>Wo0pz! Game Over</h1>
+        <div class="text-center">
+            <button type="button" class="btn-bgless" onclick="config.changeUser()">Change Username</button>
+            <span class="text-light">or</span>
+            <button type="button" class="btn-bgless" onclick="config.playAgain()">Play Again With Same User</button>
+            <hr>
+        </div>
+        <h2 class="text-light text-center mt-3">Top 5 Best Score</h2>
+        <div class="leaderboard mt-2" style="margin-left: 34%;">
+            <ol class="ms-2 text-white" id="leaderboardGameOver"></ol>
+        </div>
+    </div>
+    <section class="slide" id="landing" style="display: none;">
+        <h2 class="text-light">Welcome To SnakeJS!</h2>
+        <p class="text-light mt-2 description">
+            Dear Player, <br>
+            Selamat datang di SnakeJS.<br>
+            <span style="margin-left: 50px;">Pada permainan ini, kamu hanya bisa mendapatkan</span> 
+            point tambahan ketika memakan buah apel dengan cara mengarahkan ular ke posisi buah tersebut.
+            <u>Buah akan muncul dalam 3 detik, dan menghilang setelah 5 detik buah tersebut muncul. Permainan akan
+            berhenti ketika ular mengenai sisi ujung dari papan dalam game dan juga saat ular mengenai bagian dari tubuhnya tersendiri.</u>
+            </p>
+        <p class="text-light mt-2 description">
+            <span style="margin-left: 50px;">Pada saat di dalam permainan,</span> akan terdapat menu <b>REWIND</b>, dimana posisi ular 
+            akan kembali ke dalam beberapa waktu detik lalu (Maksimal 5 Detik). Menu ini dapat di aktifkan dengan click button <b>"REWIND"</b> 
+            setelah permainan di mulai lebih dari 5 detik. Pilih range dalam kurun waktu yang ingin kamu tentukan. Sedangkan untuk menggerakan ular ke
+            suatu arah, dapat menggunakan tombol berikut :
+        </p>
+        <ul class="text-light ms-3 mt-2">
+            <li>
+                <b>W</b>
+                <span> : Ke Arah Atas</span>
+            </li>
+            <li>
+                <b>A</b>
+                <span> : Ke Arah Kiri</span>
+            </li>
+            <li>
+                <b>S</b>
+                <span> : Ke Arah Bawah</span>
+            </li>
+            <li>
+                <b>D</b>
+                <span> : Ke Arah Kanan</span>
+            </li>
+        </ul>
+        <div class="row mt-4">
+            <div class="col-sm text-end">
+                <button type="button" class="btn-slide mt-3" onclick="nextSlide('landing')">Next</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide" id="formuser" style="display: none;">
+        <h2 class="text-light">Top 5 Best Score</h2>
+        <div class="leaderboard">
+            <ol class="ms-2 text-white" id="leaderboard"></ol>
+        </div>
+        <form class="mt-10">
+            <div>
+                <label class="text-light">Please enter your username</label>
+                <input type="text" class="form-input ms-3" placeholder="Username" id="form_username">
+                <span id="isempty">Username is empty!</span>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-sm-6 text-start mt-0 mb-0">
+                <button type="button" class="btn-slide mt-3" onclick="nextSlide('back-landing')">Back</button>
+            </div>
+            <div class="col-sm-6 text-end mt-0 mb-0">
+                <button type="button" class="btn-slide mt-3" onclick="nextSlide('play')">Next</button>
+            </div>
+        </div>
+    </section>
+
+    <main id="main">
+        <div class="row">
+            <div class="col-sm-3 text-start">
+                <h3 class="text-light">Score</h3>
+                <h5 class="text-light" id="score">0</h5>
+            </div>
+            <div class="col-sm-6 text-center">
+                <h1 class="text-light">SnakeJS</h1>
+            </div>
+            <div class="col-sm-3 text-end">
+                <h3 class="text-light">Time</h3>
+                <h5 class="text-light" id="time">00:00:00</h5>
+            </div>
+        </div>
+        <div class="content">
+            <table id="papan" class="table m-auto"></table>
+            <div class="row text-center" id="rewindTriggred" style="display: inline;">
+                <div class="col-sm text-center" style="width: 100%;">
+                    <button type="button" class="btn btn-rewind mt-3 mb-3 mb-4" onclick="config.clickRewind()">REWIND</button>
+                </div>
+            </div>
+            <div class="row" id="rewindMenu" style="display: none;">
+                <div class="col-sm-3 text-center">
+                    <button type="button" class="btn btn-cancle mt-3 mb-3 mb-4" onclick="config.clickCancle()">CANCLE</button>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <input type="range" id="rewind" name="points" min="0" max="5" value="5" class="mt-4" onchange="config.rewind()">
+                </div>
+                <div class="col-sm-3 text-center">
+                    <button type="button" class="btn btn-rewind mt-3 mb-3 mb-4" onclick="config.clickPlay()">PLAY</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <audio id="audio" src="./sounds/eat.mp3" style="display: none;"></audio>
+    <script src="./js/Snake.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

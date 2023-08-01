@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link href="./css/main.css" rel="stylesheet">
     <meta charset="UTF-8">
@@ -7,10 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SnakeJS</title>
 </head>
+
 <body class="container">
     <noscript>
         <div class="message">
-            You don't have javascript enabled.  Good luck with that.
+            You don't have javascript enabled. Good luck with that.
         </div>
     </noscript>
     <div id="gameover">
@@ -31,15 +33,19 @@
         <p class="text-light mt-2 description">
             Dear Player, <br>
             Selamat datang di SnakeJS.<br>
-            <span style="margin-left: 50px;">Pada permainan ini, kamu hanya bisa mendapatkan</span> 
+            <span style="margin-left: 50px;">Pada permainan ini, kamu hanya bisa mendapatkan</span>
             point tambahan ketika memakan buah apel dengan cara mengarahkan ular ke posisi buah tersebut.
             <u>Buah akan muncul dalam 3 detik, dan menghilang setelah 5 detik buah tersebut muncul. Permainan akan
-            berhenti ketika ular mengenai sisi ujung dari papan dalam game dan juga saat ular mengenai bagian dari tubuhnya tersendiri.</u>
-            </p>
+                berhenti ketika ular mengenai sisi ujung dari papan dalam game dan juga saat ular mengenai bagian dari
+                tubuhnya tersendiri.</u>
+        </p>
         <p class="text-light mt-2 description">
-            <span style="margin-left: 50px;">Pada saat di dalam permainan,</span> akan terdapat menu <b>REWIND</b>, dimana posisi ular 
-            akan kembali ke dalam beberapa waktu detik lalu (Maksimal 5 Detik). Menu ini dapat di aktifkan dengan click button <b>"REWIND"</b> 
-            setelah permainan di mulai lebih dari 5 detik. Pilih range dalam kurun waktu yang ingin kamu tentukan. Sedangkan untuk menggerakan ular ke
+            <span style="margin-left: 50px;">Pada saat di dalam permainan,</span> akan terdapat menu <b>REWIND</b>,
+            dimana posisi ular
+            akan kembali ke dalam beberapa waktu detik lalu (Maksimal 5 Detik). Menu ini dapat di aktifkan dengan click
+            button <b>"REWIND"</b>
+            setelah permainan di mulai lebih dari 5 detik. Pilih range dalam kurun waktu yang ingin kamu tentukan.
+            Sedangkan untuk menggerakan ular ke
             suatu arah, dapat menggunakan tombol berikut :
         </p>
         <ul class="text-light ms-3 mt-2">
@@ -107,18 +113,22 @@
             <table id="papan" class="table m-auto"></table>
             <div class="row text-center" id="rewindTriggred" style="display: inline;">
                 <div class="col-sm text-center" style="width: 100%;">
-                    <button type="button" class="btn btn-rewind mt-3 mb-3 mb-4" onclick="config.clickRewind()">REWIND</button>
+                    <button type="button" class="btn btn-rewind mt-3 mb-3 mb-4"
+                        onclick="config.clickRewind()">REWIND</button>
                 </div>
             </div>
             <div class="row" id="rewindMenu" style="display: none;">
                 <div class="col-sm-3 text-center">
-                    <button type="button" class="btn btn-cancle mt-3 mb-3 mb-4" onclick="config.clickCancle()">CANCLE</button>
+                    <button type="button" class="btn btn-cancle mt-3 mb-3 mb-4"
+                        onclick="config.clickCancle()">CANCLE</button>
                 </div>
                 <div class="col-sm-6 text-center">
-                    <input type="range" id="rewind" name="points" min="0" max="5" value="5" class="mt-4" onchange="config.rewind()">
+                    <input type="range" id="rewind" name="points" min="0" max="5" value="5" class="mt-4"
+                        onchange="config.rewind()">
                 </div>
                 <div class="col-sm-3 text-center">
-                    <button type="button" class="btn btn-rewind mt-3 mb-3 mb-4" onclick="config.clickPlay()">PLAY</button>
+                    <button type="button" class="btn btn-rewind mt-3 mb-3 mb-4"
+                        onclick="config.clickPlay()">PLAY</button>
                 </div>
             </div>
         </div>
@@ -127,4 +137,5 @@
     <script src="./js/Snake.js"></script>
     <script src="./js/main.js"></script>
 </body>
+
 </html>
